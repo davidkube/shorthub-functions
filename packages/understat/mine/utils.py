@@ -5,7 +5,7 @@ from datetime import datetime
 
 from bs4 import BeautifulSoup
 
-from understat.constants import PATTERN
+from  constants import PATTERN
 
 
 def to_league_name(league_name):

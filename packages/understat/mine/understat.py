@@ -1,6 +1,6 @@
-from understat.constants import (BASE_URL, LEAGUE_URL, MATCH_URL, PLAYER_URL,
+from  constants import (BASE_URL, LEAGUE_URL, MATCH_URL, PLAYER_URL,
                                  TEAM_URL)
-from understat.utils import (filter_by_positions, filter_data, get_data,
+from utils import (filter_by_positions, filter_data, get_data,
                              to_league_name, filter_by_date)
 
 

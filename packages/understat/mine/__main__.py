@@ -2,7 +2,7 @@ import asyncio
 import json
 import aiohttp
 
-from understat.understat import Understat
+from understat import Understat
 
 async def main(args):
       async with aiohttp.ClientSession() as session:
