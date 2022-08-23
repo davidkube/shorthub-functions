@@ -1,17 +1,5 @@
-environment: {
+environment:
   DB: "u807mD45kl192cNP"
-}
-parameters: {
-  leagues: [
-    "epl": "EPL",
-    "la_liga": "La_liga",
-    "bundesliga": "Bundesliga",
-    "serie_a": "Serie_A",
-    "ligue_1": "Ligue_1",
-    "rfpl": "RFPL"
-  ],
-  start_season: 2014
-}
 packages:
   - name: understat
     actions:
