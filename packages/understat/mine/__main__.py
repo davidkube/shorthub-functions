@@ -37,13 +37,15 @@ def main(args):
       LEAGUE = args[1]
       SEASON = args[2]
 
+      response = ""
+
       cont = True
       if LEAGUE not in LEAGUES.values():
-            print('Invalid League')
+            response += 'Invalid League'
             cont = False
       currentYear = datetime.now().year
       if int(SEASON) not in range(START_SEASON,currentYear+1):
-            print('Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')')
+            response += (response == "" ? "" : ', ') + 'Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')')
             cont = False
       if cont:
             print( LEAGUE + ' : ' + str(SEASON))
@@ -53,3 +55,5 @@ def main(args):
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             loop.run_until_complete(main_two([COLL]))
+            return {"status": 200, "body": LEAGUE + ' : ' + str(SEASON)}
+      return {"status": 400, "body" : response}
