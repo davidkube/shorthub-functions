@@ -23,7 +23,7 @@ def rename_id(dict):
       dict['_id'] = dict.pop('id')
       return dict
 
-async def main(args):
+async def main_two(args):
       async with aiohttp.ClientSession() as session:
             understat = Understat(session)
             list_of_matches = await understat.get_league_matches(sys.argv[1],sys.argv[2]) 
@@ -33,9 +33,9 @@ async def main(args):
             args[0].insert_many(reindexed)
             
       
-if __name__ == "__main__":
-      LEAGUE = sys.argv[1]
-      SEASON = sys.argv[2]
+def main(args):
+      LEAGUE = args[1]
+      SEASON = args[2]
 
       cont = True
       if LEAGUE not in LEAGUES.values():
@@ -52,4 +52,4 @@ if __name__ == "__main__":
             COLL = DB["matches"]
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            loop.run_until_complete(main([COLL]))
+            loop.run_until_complete(main_two([COLL]))
