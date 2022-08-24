@@ -57,6 +57,3 @@ def main(args):
             loop.run_until_complete(main_two([COLL]))
             return {"status": 200, "body": LEAGUE + ' : ' + str(SEASON)}
       return {"status": 400, "body" : response}
-
-if __name__ == '__main__':
-      print(main({'league':'EPL','season':2016}))
