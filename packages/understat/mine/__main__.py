@@ -45,7 +45,7 @@ def main(args):
             cont = False
       currentYear = datetime.now().year
       if int(SEASON) not in range(START_SEASON,currentYear+1):
-            response +='Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')')
+            response +='Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')'
             cont = False
       if cont:
             print( LEAGUE + ' : ' + str(SEASON))
@@ -57,3 +57,6 @@ def main(args):
             loop.run_until_complete(main_two([COLL]))
             return {"status": 200, "body": LEAGUE + ' : ' + str(SEASON)}
       return {"status": 400, "body" : response}
+
+if __name__ == '__main__':
+      print(main({'league':'EPL','season':2016}))
