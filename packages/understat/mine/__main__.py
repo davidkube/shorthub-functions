@@ -34,8 +34,8 @@ async def main_two(args):
             
       
 def main(args):
-      LEAGUE = args[1]
-      SEASON = args[2]
+      LEAGUE = args['league']
+      SEASON = args['season']
 
       response = ""
 
