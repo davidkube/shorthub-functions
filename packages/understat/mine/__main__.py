@@ -45,7 +45,7 @@ def main(args):
             cont = False
       currentYear = datetime.now().year
       if int(SEASON) not in range(START_SEASON,currentYear+1):
-            response += (response == "" ? "" : ', ') + 'Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')')
+            response +='Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')')
             cont = False
       if cont:
             print( LEAGUE + ' : ' + str(SEASON))
