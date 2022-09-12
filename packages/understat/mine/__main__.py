@@ -26,7 +26,7 @@ def rename_id(dict):
 async def main_two(args):
       async with aiohttp.ClientSession() as session:
             understat = Understat(session)
-            list_of_matches = await understat.get_league_matches(sys.argv[1],sys.argv[2]) 
+            list_of_matches = await understat.get_league_matches(args[1],args[2]) 
 
             reindexed = [rename_id(match) for match  in list_of_matches]
             args[0].delete_many( { '_id' : { '$in': [match['_id'] for match in reindexed] } } );
@@ -48,12 +48,15 @@ def main(args):
             response +='Invalid Season : ' + str(SEASON) + ' not in (' + ', '.join([str(x) for x in range(START_SEASON,currentYear+1)]) + ')'
             cont = False
       if cont:
-            print( LEAGUE + ' : ' + str(SEASON))
             CLIENT = pymongo.MongoClient("mongodb+srv://doadmin:u807mD45kl192cNP@shorthub-9b85bbdd.mongo.ondigitalocean.com/understat?tls=true&authSource=admin&replicaSet=shorthub")
             DB = CLIENT["understat"]
             COLL = DB["matches"]
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            loop.run_until_complete(main_two([COLL]))
-            return {"statusCode": 200, "body": LEAGUE + ' : ' + str(SEASON)}
+            loop.run_until_complete(main_two([COLL,LEAGUE,SEASON]))
+            response = LEAGUE + ' : ' + str(SEASON)
+            return {"statusCode": 200, "body": response}
       return {"statusCode": 400, "body" : response}
+
+if __name__ == '__main__':
+      print(main({'league':sys.argv[1],'season':sys.argv[2]}))

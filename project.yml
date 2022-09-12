@@ -5,3 +5,4 @@ packages:
     actions:
       - name: mine
         runtime: 'python:default'
+        timeout: 30s
