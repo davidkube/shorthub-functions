@@ -53,7 +53,6 @@ def main(args):
             COLL = DB["matches"]
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            loop.run_until_complete(main_two([COLL,LEAGUE,SEASON]))
-            response = LEAGUE + ' : ' + str(SEASON)
+            response = loop.run(main_two([COLL,LEAGUE,SEASON]))
             return {"statusCode": 200, "body": response}
       return {"statusCode": 400, "body" : response}
