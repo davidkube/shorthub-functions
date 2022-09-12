@@ -57,6 +57,3 @@ def main(args):
             response = LEAGUE + ' : ' + str(SEASON)
             return {"statusCode": 200, "body": response}
       return {"statusCode": 400, "body" : response}
-
-if __name__ == '__main__':
-      print(main({'league':sys.argv[1],'season':sys.argv[2]}))
