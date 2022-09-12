@@ -5,4 +5,6 @@ packages:
     actions:
       - name: mine
         runtime: 'python:default'
-        timeout: 30s
+        limits:
+          timeout: 30000
+          memory: 128
