@@ -30,7 +30,7 @@ async def main_two(args):
 
             reindexed = [rename_id(match) for match  in list_of_matches]
             args[0].delete_many( { '_id' : { '$in': [match['_id'] for match in reindexed] } } );
-            args[0].insert_many(reindexed)
+            return args[0].insert_many(reindexed).inserted_ids
             
       
 def main(args):
@@ -51,8 +51,9 @@ def main(args):
             CLIENT = pymongo.MongoClient("mongodb+srv://doadmin:u807mD45kl192cNP@shorthub-9b85bbdd.mongo.ondigitalocean.com/understat?tls=true&authSource=admin&replicaSet=shorthub")
             DB = CLIENT["understat"]
             COLL = DB["matches"]
+            
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
-            response = loop.run(main_two([COLL,LEAGUE,SEASON]))
+            response = '(' + ', '.join([str(x) for x in loop.run_until_complete(main_two([COLL,LEAGUE,SEASON]))]) + ')'
             return {"statusCode": 200, "body": response}
       return {"statusCode": 400, "body" : response}
