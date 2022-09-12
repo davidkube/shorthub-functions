@@ -7,4 +7,3 @@ packages:
         runtime: 'python:default'
         limits:
           timeout: 30000
-          memory: 128
