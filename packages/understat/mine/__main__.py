@@ -55,5 +55,5 @@ def main(args):
             loop = asyncio.new_event_loop()
             asyncio.set_event_loop(loop)
             loop.run_until_complete(main_two([COLL]))
-            return {"status": 200, "body": LEAGUE + ' : ' + str(SEASON)}
-      return {"status": 400, "body" : response}
+            return {"statusCode": 200, "body": LEAGUE + ' : ' + str(SEASON)}
+      return {"statusCode": 400, "body" : response}
